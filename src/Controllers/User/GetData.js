@@ -1,23 +1,44 @@
+const { DiseaseData } = require("../../Modules/disease");
 
-const { DiseaseData}= require("../../Modules/disease")
+const getDiseaseController = (req, res) => {
+    const { color } = req.body; // Expecting the color from the frontend request body
+    console.log("Received color:", color);
 
+    // Convert the received color to lowercase for consistency
+    const normalizedColor = color?.toLowerCase();
 
+    if (!normalizedColor) {
+        return res.status(400).json({
+            success: false,
+            message: "No color provided in the request",
+        });
+    }
 
-const getDiseaseController=(req, res)=>{
-    console.log("what is data")
-    DiseaseData.find().exec()
-    .then((user)=>{
-        if(user!==null){
-            res.status(200).json({success:true, message:"Data fetched Successfully", Data:user})
-        }else{
-            res.status(404).json({success:false, message:"Data not fetched"})
-        }
+    // Search for diseases in the database that match the color
+    DiseaseData.find({ color: normalizedColor })
+        .exec()
+        .then((diseases) => {
+            if (diseases && diseases.length > 0) {
+                res.status(200).json({
+                    success: true,
+                    message: "Matching diseases fetched successfully",
+                    data: diseases,
+                });
+            } else {
+                res.status(404).json({
+                    success: false,
+                    message: "No diseases found for the provided color",
+                });
+            }
+        })
+        .catch((err) => {
+            console.error("Error fetching data:", err);
+            res.status(500).json({
+                success: false,
+                message: "An error occurred while fetching data",
+                error: err,
+            });
+        });
+};
 
-    }).catch((err)=>{
-        res.status(404).json({success:false, message:"Data not found", err:err})
-
-    })
-
-}
-
-module.exports={getDiseaseController}
+module.exports = { getDiseaseController };
