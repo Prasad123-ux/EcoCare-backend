@@ -10,7 +10,9 @@ env.config()
 
 
 app.use("/api/user", getDieaseRoute)
-const cors = require("cors");
+const cors = require("cors"); 
+app.use(express.json()); // Parse JSON data
+app.use(express.urlencoded({ extended: true }))
 
 // const cors = require("cors");
 
