@@ -12,7 +12,7 @@ env.config()
 app.use("/api/user", getDieaseRoute)
 const cors = require("cors");
 
-const cors = require("cors");
+// const cors = require("cors");
 
 const allowedOrigins = [
   "http://localhost:3000", 
