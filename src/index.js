@@ -10,6 +10,27 @@ env.config()
 
 
 app.use("/api/user", getDieaseRoute)
+const cors = require("cors");
+
+const cors = require("cors");
+
+const allowedOrigins = [
+  "http://localhost:3000", 
+  "https://vercel.com/prasad-metkars-projects/ecocare-frontend/4PPmB7a2YDdgaeRa3SHdqNtLbhfK"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error("Not allowed by CORS")); // Reject the request
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 
 
 
