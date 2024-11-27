@@ -1,10 +1,11 @@
 
-const {diseaseDataSchema}= require("../../Modules/disease")
+const { DiseaseData}= require("../../Modules/disease")
 
 
 
 const getDiseaseController=(req, res)=>{
-    diseaseDataSchema.find().exec()
+    console.log("what is data")
+    DiseaseData.find().exec()
     .then((user)=>{
         if(user!==null){
             res.status(200).json({success:true, message:"Data fetched Successfully", Data:user})

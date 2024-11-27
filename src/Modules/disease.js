@@ -1,6 +1,7 @@
 // import { mongoose } from "../Config/db"; 
 const {mongoose}= require("../Config/db")
 
+
 const diseaseDataSchema = new mongoose.Schema({
     disease: {
       type: String,
@@ -28,4 +29,5 @@ const diseaseDataSchema = new mongoose.Schema({
     }
   });
 
-  module.exports={diseaseDataSchema}
+  const DiseaseData = mongoose.model('DiseaseData', diseaseDataSchema);
+module.exports = {DiseaseData};
