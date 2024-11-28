@@ -37,7 +37,7 @@ const getDiseaseController = (req, res) => {
             res.status(500).json({
                 success: false,
                 message: "An error occurred while fetching data",
-                error: err,
+                error: err.message,
             });
         });
 };
