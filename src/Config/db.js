@@ -6,8 +6,8 @@ env.config()
 
 
 //    mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.g02l0.mongodb.net/jobNexus?retryWrites=true&w=majority`)
- mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.rzpaw.mongodb.net/EcoCare?retryWrites=true&w=majority&appName=Cluster0`)
-// mongoose.connect('mongodb://0.0.0.0/jobNexus')
+//  mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.rzpaw.mongodb.net/EcoCare?retryWrites=true&w=majority&appName=Cluster0`)
+ mongoose.connect('mongodb://0.0.0.0/EcoCare')
 .then(()=>{
    
  console.log("Database connected")

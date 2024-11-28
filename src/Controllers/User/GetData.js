@@ -1,6 +1,7 @@
 const { DiseaseData } = require("../../Modules/disease");
 
-const getDiseaseController = (req, res) => {
+const getDiseaseController = (req, res) => { 
+    console.log(req.body)
     const color= req.body.color; // Expecting the color from the frontend request body
     console.log("Received color:", color);
 
